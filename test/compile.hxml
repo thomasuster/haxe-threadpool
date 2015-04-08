@@ -1,0 +1,4 @@
+-cpp bin
+-cp .
+-cp ../src
+-main TestMain
