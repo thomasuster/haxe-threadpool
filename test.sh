@@ -1,3 +1,4 @@
 cd test
 haxe compile.hxml
-bin/TestMain
+cd ..
+bin/test/TestMain
