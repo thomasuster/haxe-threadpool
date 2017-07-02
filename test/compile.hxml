@@ -2,3 +2,4 @@
 -cp .
 -cp ../src
 -main TestMain
+-D HXCPP_CPP11
