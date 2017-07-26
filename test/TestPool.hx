@@ -22,12 +22,13 @@ class TestPool extends haxe.unit.TestCase {
     }
 
     public function testDistributedLoop():Void {
-        var sum:Int = 0;
-        pool.distributeLoop(5,function(index:Int) {
-            sum+=index;
+        var source:Array<Int> = [10,20,30];
+        var copy:Array<Int> = [0,0,0];
+        pool.distributeLoop(source.length,function(index:Int) {
+            copy[index] = source[index];
         });
         pool.blockRunAll();
-        assertEquals(0+1+2+3+4, sum);
+        assertEquals(source.join(','), '10,20,30');
     }
 
     public function testWithMoreTasksThanThreads() {
