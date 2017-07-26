@@ -24,11 +24,12 @@ public function testSimple() {
 public function testDistributedLoop():Void {
     var pool = new ThreadPool(4);
     var sum:Int = 0;
-    pool.distributeLoop(5,function(index:Int) {
-        sum+=index;
+    var nums:Array<Int> = [10,20,30];
+    pool.distributeLoop(nums.length,function(index:Int) {
+        sum+=nums[index];
     });
     pool.blockRunAll();
-    assertEquals(0+1+2+3+4, sum);
+    assertEquals(10+20+30, sum);
     pool.end();
 }
 ```
