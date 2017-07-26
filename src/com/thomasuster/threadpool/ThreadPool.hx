@@ -9,6 +9,7 @@ import neko.vm.Thread;
 #end
 
 typedef Task = Void->Void;
+typedef Loop = Int->Void;
 
 class ThreadPool {
 
@@ -30,6 +31,7 @@ class ThreadPool {
 
         for (i in 0...num) {
             var model = new ThreadModel();
+            model.id = i;
             model.mutex.acquire();
             models.push(model);
         }
@@ -62,7 +64,7 @@ class ThreadPool {
         queue.push(task);
     }
 
-    public function runAll():Void {
+    public function blockRunAll():Void {
         var numPerThread:Int = Math.floor(queue.length / num);
         var remainder:Int = queue.length - num * numPerThread;
         for (i in 0...num) {
@@ -73,11 +75,28 @@ class ThreadPool {
             }
             models[i].mutex.release();
         }
-
+        
         for (i in 0...num) {
             models[i].mutex.acquire();
         }
         queue = [];
+    }
+
+    public function distributeLoop(length:Int, loop:Loop):Void {
+        var numPerThread:Int = Math.floor(length / num);
+        var remainder:Int = length - numPerThread * num;
+        for (i in 0...num) {
+            var start:Int = i * numPerThread;
+            var end:Int = start + numPerThread;
+            if(i == num-1) {
+                end+=remainder;
+            }
+            for (j in start...end) {
+                addConcurrent(function() {
+                    loop(j);
+                });
+            }
+        }
     }
 
     public function end():Void {

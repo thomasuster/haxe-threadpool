@@ -17,8 +17,17 @@ class TestPool extends haxe.unit.TestCase {
             didWork = true;
         };
         pool.addConcurrent(work);
-        pool.runAll();
+        pool.blockRunAll();
         assertTrue(didWork);
+    }
+
+    public function testDistributedLoop():Void {
+        var sum:Int = 0;
+        pool.distributeLoop(5,function(index:Int) {
+            sum+=index;
+        });
+        pool.blockRunAll();
+        assertEquals(0+1+2+3+4, sum);
     }
 
     public function testWithMoreTasksThanThreads() {
@@ -44,7 +53,7 @@ class TestPool extends haxe.unit.TestCase {
                 didWork[i] = Sys.time();
             });
         }
-        pool.runAll();
+        pool.blockRunAll();
         var now:Float = Sys.time();
         for (i in 0...num)
             assertTrue(didWork[i] <= now);
