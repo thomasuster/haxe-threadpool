@@ -1,4 +1,4 @@
-package com.thomasuster.spinz;
+package com.thomasuster.threadpool;
 
 #if cpp
 import cpp.vm.Mutex;
@@ -10,7 +10,7 @@ import neko.vm.Thread;
 
 typedef Task = Void->Void;
 
-class Spinz {
+class ThreadPool {
 
     var num:Int;
     var theEnd:Bool;

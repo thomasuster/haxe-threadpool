@@ -1,15 +1,14 @@
-import cpp.vm.Gc;
-import com.thomasuster.spinz.Spinz;
-class TestProject extends haxe.unit.TestCase {
+import com.thomasuster.threadpool.ThreadPool;
+class TestPool extends haxe.unit.TestCase {
 
-    var spinz:Spinz;
+    var pool:ThreadPool;
     
     override public function setup():Void {
-        spinz = new Spinz(4);
+        pool = new ThreadPool(4);
     }
 
     override public function tearDown():Void {
-        spinz.end();
+        pool.end();
     }
     
     public function testSimple() {
@@ -17,8 +16,8 @@ class TestProject extends haxe.unit.TestCase {
         var work:Void->Void = function(){
             didWork = true;
         };
-        spinz.addConcurrent(work);
-        spinz.runAll();
+        pool.addConcurrent(work);
+        pool.runAll();
         assertTrue(didWork);
     }
 
@@ -41,11 +40,11 @@ class TestProject extends haxe.unit.TestCase {
             didWork.push(0);
         }
         for (i in 0...num) {
-            spinz.addConcurrent(function() {
+            pool.addConcurrent(function() {
                 didWork[i] = Sys.time();
             });
         }
-        spinz.runAll();
+        pool.runAll();
         var now:Float = Sys.time();
         for (i in 0...num)
             assertTrue(didWork[i] <= now);

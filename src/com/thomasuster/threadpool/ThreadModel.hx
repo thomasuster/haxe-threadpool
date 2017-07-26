@@ -1,4 +1,4 @@
-package com.thomasuster.spinz;
+package com.thomasuster.threadpool;
 #if cpp
 import cpp.vm.Mutex;
 #else
