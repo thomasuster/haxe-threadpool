@@ -13,7 +13,7 @@ class TestPool extends haxe.unit.TestCase {
     
     public function testSimple() {
         var didWork:Bool = false;
-        var work:Void->Void = function(){
+        var work:Void->Void = function() {
             didWork = true;
         };
         pool.addConcurrent(work);
