@@ -23,6 +23,7 @@ pool.end();
 
 ## distributeLoop example
 ```
+var pool = new ThreadPool(4);
 var source:Array<Int> = [10,20,30];
 var copy:Array<Int> = [0,0,0];
 pool.distributeLoop(source.length,function(index:Int) {
@@ -30,6 +31,7 @@ pool.distributeLoop(source.length,function(index:Int) {
 });
 pool.blockRunAll();
 assertEquals(source.join(','), '10,20,30');
+pool.end();
 ```
 
 ## Shared resources example
