@@ -9,7 +9,7 @@ haxelib dev haxe-threadpool haxe-threadpool/src
 ```
 
 ## addConcurrent example
-```
+```haxe
 var pool = new ThreadPool(4);
 var didWork:Bool = false;
 var work:Void->Void = function() {
@@ -22,7 +22,7 @@ pool.end();
 ```
 
 ## distributeLoop example
-```
+```haxe
 var pool = new ThreadPool(4);
 var source:Array<Int> = [10,20,30];
 var copy:Array<Int> = [0,0,0];
@@ -35,7 +35,7 @@ pool.end();
 ```
 
 ## Shared resources example
-```
+```haxe
 var pool = new ThreadPool(4);
 var sumM:Mutex = new Mutex();
 var sum:Int = 0;
