@@ -37,9 +37,11 @@ class ThreadPool {
 
     function threadLoop(model:ThreadModel):Void {
         while(true) {
-            if(theEnd)
-                break;
             model.mutex.acquire();
+            if(theEnd) {
+                model.mutex.release();
+                break;
+            }
             if(!model.done) {
                 for (i in model.start...model.end)
                     queue[i]();
