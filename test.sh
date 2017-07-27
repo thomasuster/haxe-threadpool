@@ -1,4 +1,4 @@
 cd test
-haxe compile.hxml
+haxe compile.hxml --times
 cd ..
 bin/test/TestMain

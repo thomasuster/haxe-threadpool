@@ -5,7 +5,7 @@
 
 ```
 git clone https://github.com/thomasuster/haxe-threadpool.git
-haxelib dev haxe-threadpool haxe-threadpool/src
+haxelib dev haxe-threadpool haxe-threadpool
 ```
 
 ## addConcurrent example

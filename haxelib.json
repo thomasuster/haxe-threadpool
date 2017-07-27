@@ -1,0 +1,11 @@
+{
+  "name": "haxe-threadpool",
+  "url": "https://github.com/thomasuster/haxe-threadpool",
+  "license": "MIT",
+  "classPath": "src",
+  "tags": ["thread","pool"],
+  "description": "Thread pool library for haxe (neko or CPP)",
+  "releasenote": "",
+  "version": "1.0.0",
+  "contributors": []
+}
