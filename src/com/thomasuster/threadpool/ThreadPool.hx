@@ -1,10 +1,8 @@
 package com.thomasuster.threadpool;
 
 #if cpp
-import cpp.vm.Mutex;
 import cpp.vm.Thread;
 #else
-import neko.vm.Mutex;
 import neko.vm.Thread;
 #end
 
@@ -15,9 +13,7 @@ class ThreadPool {
 
     var num:Int;
     var theEnd:Bool;
-    
     var models:Array<ThreadModel>;
-    
     var queue:Array<Task>;
 
     public function new(num:Int):Void {
