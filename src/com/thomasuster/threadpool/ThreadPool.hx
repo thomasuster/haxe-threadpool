@@ -15,8 +15,6 @@ class ThreadPool {
 
     var num:Int;
     var theEnd:Bool;
-    var numAlive:Int;
-    var numAliveM:Mutex;
     
     var models:Array<ThreadModel>;
     
@@ -24,10 +22,8 @@ class ThreadPool {
 
     public function new(num:Int):Void {
         this.num = num;
-        numAlive = num;
         models = [];
         queue = [];
-        numAliveM = new Mutex();
 
         for (i in 0...num) {
             var model = new ThreadModel();
@@ -55,9 +51,6 @@ class ThreadPool {
             }
             model.mutex.release();
         }
-        numAliveM.acquire();
-        numAlive--;
-        numAliveM.release();
     }
 
     public function addConcurrent(task:Task):Void {

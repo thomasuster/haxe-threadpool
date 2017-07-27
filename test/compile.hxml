@@ -1,4 +1,5 @@
 -cpp ../bin/test
 -cp .
 -cp ../src
+#-D HXCPP_VERBOSE
 -main TestMain
