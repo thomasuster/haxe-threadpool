@@ -12,7 +12,7 @@ haxelib dev haxe-threadpool haxe-threadpool/src
 ```haxe
 var pool = new ThreadPool(4);
 var didWork:Bool = false;
-var work:Void->Void = function() {
+var work:Void->Void = function():Void {
     didWork = true;
 };
 pool.addConcurrent(work);
