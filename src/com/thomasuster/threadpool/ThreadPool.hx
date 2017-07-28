@@ -6,8 +6,10 @@ import cpp.vm.Thread;
 import neko.vm.Thread;
 #end
 
-typedef Task = Void->Void;
-typedef Loop = Int->Void;
+private typedef LoopIndex = Int;
+private typedef ThreadID = Int;
+private typedef Task = ThreadID->Void;
+private typedef Loop = ThreadID->LoopIndex->Void;
 
 class ThreadPool {
 
@@ -36,6 +38,7 @@ class ThreadPool {
     }
 
     function threadLoop(model:ThreadModel):Void {
+        var id:ThreadID = model.id; 
         while(true) {
             model.mutex.acquire();
             if(theEnd) {
@@ -44,7 +47,7 @@ class ThreadPool {
             }
             if(!model.done) {
                 for (i in model.start...model.end)
-                    queue[i]();
+                    queue[i](id);
                 model.done = true;   
             }
             model.mutex.release();
@@ -83,8 +86,8 @@ class ThreadPool {
                 end+=remainder;
             }
             for (j in start...end) {
-                addConcurrent(function() {
-                    loop(j);
+                addConcurrent(function(i) {
+                    loop(i,j);
                 });
             }
         }

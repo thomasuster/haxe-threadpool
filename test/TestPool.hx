@@ -13,7 +13,7 @@ class TestPool extends haxe.unit.TestCase {
     
     public function testSimple() {
         var didWork:Bool = false;
-        var work:Void->Void = function() {
+        var work:Int->Void = function(t:Int) {
             didWork = true;
         };
         pool.addConcurrent(work);
@@ -24,7 +24,7 @@ class TestPool extends haxe.unit.TestCase {
     public function testDistributedLoop():Void {
         var source:Array<Int> = [10,20,30];
         var copy:Array<Int> = [0,0,0];
-        pool.distributeLoop(source.length,function(index:Int) {
+        pool.distributeLoop(source.length,function(t:Int, index:Int) {
             copy[index] = source[index];
         });
         pool.blockRunAll();
@@ -50,7 +50,7 @@ class TestPool extends haxe.unit.TestCase {
             didWork.push(0);
         }
         for (i in 0...num) {
-            pool.addConcurrent(function() {
+            pool.addConcurrent(function(t:Int) {
                 didWork[i] = Sys.time();
             });
         }
