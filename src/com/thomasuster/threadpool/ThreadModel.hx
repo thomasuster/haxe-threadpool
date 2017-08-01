@@ -9,6 +9,7 @@ class ThreadModel {
     public var start:Int;
     public var end:Int;
     public var mutex:Mutex;
+    public var pending:Bool;
     public var done:Bool;
 
     public function new():Void {
