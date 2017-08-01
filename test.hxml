@@ -1,0 +1,4 @@
+-cmd cd test
+-cmd haxe compile.hxml
+-cmd bin/test/TestMain
+-cmd cd ..

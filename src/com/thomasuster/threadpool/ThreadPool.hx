@@ -41,6 +41,7 @@ class ThreadPool {
         var id:ThreadID = model.id; 
         while(true) {
             model.mutex.acquire();
+			model.pending = false;
             if(theEnd) {
                 model.mutex.release();
                 break;
@@ -67,11 +68,20 @@ class ThreadPool {
             if(i == num-1) {
                 models[i].end += remainder;
             }
+			models[i].pending = true;
             models[i].mutex.release();
         }
         
-        for (i in 0...num) {
+		var i:Int = 0;
+        while(i < num) {
             models[i].mutex.acquire();
+			if(models[i].pending) {
+				models[i].mutex.release();
+				i--;
+			}
+			else {
+				i++;
+			}
         }
         queue = [];
     }
