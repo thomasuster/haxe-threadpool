@@ -1,5 +1,10 @@
--cpp ../bin/test
 -cp .
 -cp ../src
-#-D HXCPP_VERBOSE
 -main TestMain
+-cpp ../bin/test
+
+--next
+-cp .
+-cp ../src
+-main TestMain
+-neko ../bin/test/TestMain.n
