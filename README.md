@@ -12,7 +12,8 @@ haxelib dev haxe-threadpool haxe-threadpool
 ```haxe
 var pool = new ThreadPool(4);
 var didWork:Bool = false;
-var work:Void->Void = function() {
+//t is just the thread ID, in this case it will be [0,3]
+var work:Void->Void = function(t:Int) {
     didWork = true;
 };
 pool.addConcurrent(work);
@@ -26,7 +27,7 @@ pool.end();
 var pool = new ThreadPool(4);
 var source:Array<Int> = [10,20,30];
 var copy:Array<Int> = [0,0,0];
-pool.distributeLoop(source.length,function(index:Int) {
+pool.distributeLoop(source.length,function(t:Int, index:Int) {
     copy[index] = source[index];
 });
 pool.blockRunAll();
@@ -40,7 +41,7 @@ var pool = new ThreadPool(4);
 var sumM:Mutex = new Mutex();
 var sum:Int = 0;
 var nums:Array<Int> = [10,20,30];
-pool.distributeLoop(nums.length,function(index:Int) {
+pool.distributeLoop(nums.length,function(t:Int, index:Int) {
     sumM.acquire();
     sum+=nums[index];
     sumM.release();
