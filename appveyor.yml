@@ -25,7 +25,6 @@ build_script:
 
 test_script:
     - echo CPP
-    - pwd
-    - bin/test/TestMain.exe
+    - ./bin/test/TestMain.exe
     - echo NEKO
     - neko bin/test/TestMain.n
