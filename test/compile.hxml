@@ -1,10 +1,13 @@
 -cp .
 -cp ../src
 -main TestMain
+-debug
 -cpp ../bin/test
 
 --next
+
 -cp .
 -cp ../src
 -main TestMain
+-debug
 -neko ../bin/test/TestMain.n
