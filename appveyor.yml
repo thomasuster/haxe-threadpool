@@ -22,9 +22,10 @@ install:
 build_script:
     - cd test
     - haxe compile.hxml
+    - cd ..
 
 test_script:
     - echo CPP
-    - ./bin/test/TestMain.exe
+    - bin/test/TestMain.exe
     - echo NEKO
     - neko bin/test/TestMain.n
