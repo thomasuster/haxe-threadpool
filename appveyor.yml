@@ -15,7 +15,12 @@ install:
     - haxe -version
 
 build_script:
-    - echo ""
+    - cd test
+    - haxe compile.hxml
 
 test_script:
-    - haxe test.hxml
+    - echo CPP
+    - pwd
+    - bin/test/TestMain.exe
+    - echo NEKO
+    - neko bin/test/TestMain.n
