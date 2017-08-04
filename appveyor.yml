@@ -14,5 +14,7 @@ install:
     - neko -version
     - haxe -version
 
+build_script:
+
 test_script:
     - haxe test.hxml
