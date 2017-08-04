@@ -26,6 +26,6 @@ build_script:
 
 test_script:
     - echo CPP
-    - bin/test/TestMain.exe
+    - bin\test\TestMain.exe
     - echo NEKO
-    - neko bin/test/TestMain.n
+    - neko bin\test\TestMain.n
