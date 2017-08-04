@@ -74,15 +74,9 @@ class ThreadPool {
         
         var i:Int = 0;
         while(i < num) {
-//            #if windows
-            if(models[i] == null) {
-                Sys.println('Model at $i/${num} is null');
-            }
-//            #end
             models[i].mutex.acquire();
             if(models[i].pending) {
                 models[i].mutex.release();
-                i--;
             }
             else {
                 i++;
