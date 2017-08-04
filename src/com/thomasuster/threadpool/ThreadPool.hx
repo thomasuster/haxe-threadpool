@@ -75,7 +75,7 @@ class ThreadPool {
         var i:Int = 0;
         while(i < num) {
 //            #if windows
-            if(models[i].mutex == null) {
+            if(models[i] == null) {
                 Sys.println('Model at $i/${num} is null');
             }
 //            #end
