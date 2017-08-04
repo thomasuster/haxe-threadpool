@@ -2,6 +2,7 @@
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE.md)
 [![TravisCI Build Status](https://travis-ci.org/thomasuster/haxe-threadpool.svg?branch=master)](https://travis-ci.org/thomasuster/haxe-threadpool)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/thomasuster/haxe-threadpool?branch=master&svg=true)](https://ci.appveyor.com/project/thomasuster/haxe-threadpool)
 
 ```
 git clone https://github.com/thomasuster/haxe-threadpool.git
