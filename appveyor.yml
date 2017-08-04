@@ -1,0 +1,18 @@
+version: "{build}"
+
+clone_folder: C:\projects\haxe-threadpool
+
+environment:
+    global:
+        HAXE_ROOT: C:\projects\haxe
+        HAXELIB_ROOT: C:\projects\haxelib
+
+install:
+    - cinst neko -y
+    - cinst haxe --prerelease --ignore-dependencies -s 'https://ci.appveyor.com/nuget/haxe' -y
+    - RefreshEnv
+    - neko -version
+    - haxe -version
+
+test_script:
+    - haxe test.hxml
