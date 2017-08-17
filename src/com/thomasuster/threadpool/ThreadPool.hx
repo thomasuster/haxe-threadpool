@@ -79,6 +79,7 @@ class ThreadPool {
                 models[i].mutex.release();
             }
             else {
+                models[i].done = false;
                 i++;
             }
         }

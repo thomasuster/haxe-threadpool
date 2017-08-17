@@ -21,6 +21,19 @@ class TestPool extends haxe.unit.TestCase {
         assertTrue(didWork);
     }
 
+    public function testRerunning() {
+        var didWork:Int = 0;
+        pool.addConcurrent(function(t:Int) {
+            didWork+=10;
+        });
+        pool.blockRunAll();
+        pool.addConcurrent(function(t:Int) {
+            didWork*=10;
+        });
+        pool.blockRunAll();
+        assertEquals(100, didWork);
+    }
+
     public function testDistributedLoop():Void {
         var source:Array<Int> = [10,20,30];
         var copy:Array<Int> = [0,0,0];
