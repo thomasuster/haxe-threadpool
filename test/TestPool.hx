@@ -12,6 +12,7 @@ class TestPool extends haxe.unit.TestCase {
     }
     
     public function testSimple() {
+       Sys.println(Sys.time());
         var didWork:Bool = false;
         var work:Int->Void = function(t:Int) {
             didWork = true;
