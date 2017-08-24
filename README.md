@@ -12,9 +12,8 @@ haxelib dev haxe-threadpool haxe-threadpool
 ## addConcurrent example
 ```haxe
 var pool = new ThreadPool(4);
-var didWork:Bool = false;
-//t is just the thread ID, in this case it will be [0,3]
-var work:Void->Void = function(t:Int) {
+var didWork = false;
+var work = function(t:Int) {
     didWork = true;
 };
 pool.addConcurrent(work);
@@ -49,5 +48,16 @@ pool.distributeLoop(nums.length,function(t:Int, index:Int) {
 });
 pool.blockRunAll();
 assertEquals(10+20+30, sum);
+pool.end();
+```
+
+## Thread resource example
+```haxe
+var pool = new ThreadPool(2);
+var threadNames = ["Tom", "Jerry"];
+pool.addWork(function(t:Int) {
+    Sys.println("${threadNames[t]} did the work.");
+});
+pool.blockRunAll();
 pool.end();
 ```
