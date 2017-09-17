@@ -2,10 +2,18 @@ package com.thomasuster.threadpool.impl;
 
 import python.lib.threading.Lock;
 
-class MutexPy extends Lock implements MutexInterface {
+class MutexPy implements MutexInterface {
+  var mutex : Lock = new Lock();
 
   public function new() {
-    super();
+  }
+
+  public inline function acquire() : Void {
+    mutex.acquire();
+  }
+
+  public inline function release() : Void {
+    mutex.release();
   }
 
 }

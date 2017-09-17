@@ -39,12 +39,12 @@ class ThreadPool {
 
         for (i in 0...num) {
             #if cs
-            thread = new Thread(new ThreadStart(function() {
+            var thread = new Thread(new ThreadStart(function() {
                 threadLoop(models[i]);
             }));
             thread.Start();
             #elseif python
-              thread = new Thread({ target: function() {
+              new Thread({ target: function() {
                   threadLoop(models[i]);
               }});
             #else
