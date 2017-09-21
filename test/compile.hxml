@@ -1,7 +1,7 @@
 -cp .
 -cp ../src
 -main TestMain
--debug
+#-debug
 -cpp ../bin/test
 
 --next
@@ -9,5 +9,5 @@
 -cp .
 -cp ../src
 -main TestMain
--debug
+#-debug
 -neko ../bin/test/TestMain.n

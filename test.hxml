@@ -3,6 +3,6 @@
 -cmd haxe compile.hxml
 -cmd cd ..
 -cmd echo CPP
--cmd bin/test/TestMain-debug 100
+-cmd bin/test/TestMain 100
 -cmd echo NEKO
 -cmd neko bin/test/TestMain.n 100
