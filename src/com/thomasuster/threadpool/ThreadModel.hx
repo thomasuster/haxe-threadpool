@@ -14,7 +14,7 @@ class ThreadModel {
     public var id:Int;
     public var start:Int;
     public var end:Int;
-		public var mutex:MutexInterface;
+    public var mutex:MutexInterface;
     public var pending:Bool;
     public var done:Bool;
 
