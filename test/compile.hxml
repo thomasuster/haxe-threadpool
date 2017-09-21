@@ -9,6 +9,10 @@
 
 --next
 
+-cp .
+-cp ../src
+-main TestMain
+#-debug
 -neko ../bin/test/TestMain.n
 
 --next
