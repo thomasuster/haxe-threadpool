@@ -2,8 +2,15 @@ package com.thomasuster.threadpool;
 
 #if cpp
 import cpp.vm.Thread;
-#else
+#elseif neko
 import neko.vm.Thread;
+#elseif java
+import java.vm.Thread;
+#elseif cs
+import cs.system.threading.Thread;
+import cs.system.threading.ThreadStart;
+#elseif python
+import python.lib.threading.Thread;
 #end
 
 private typedef LoopIndex = Int;
@@ -31,14 +38,25 @@ class ThreadPool {
         }
 
         for (i in 0...num) {
+            #if cs
+            thread = new Thread(new ThreadStart(function() {
+                threadLoop(models[i]);
+            }));
+            thread.Start();
+            #elseif python
+              thread = new Thread({ target: function() {
+                  threadLoop(models[i]);
+              }});
+            #else
             Thread.create(function() {
                 threadLoop(models[i]);
             });
+            #end
         }
     }
 
     function threadLoop(model:ThreadModel):Void {
-        var id:ThreadID = model.id; 
+        var id:ThreadID = model.id;
         while(true) {
             model.mutex.acquire();
             model.pending = false;
@@ -49,7 +67,7 @@ class ThreadPool {
             if(!model.done) {
                 for (i in model.start...model.end)
                     queue[i](id);
-                model.done = true;   
+                model.done = true;
             }
             model.mutex.release();
         }
@@ -71,7 +89,7 @@ class ThreadPool {
             models[i].pending = true;
             models[i].mutex.release();
         }
-        
+
         var i:Int = 0;
         while(i < num) {
             models[i].mutex.acquire();
