@@ -1,6 +1,7 @@
 language: objective-c
 
 install:
+  - brew update
   - brew install neko haxe
   - cd ..
   - mkdir haxelib
