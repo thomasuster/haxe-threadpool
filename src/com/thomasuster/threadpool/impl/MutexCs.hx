@@ -1,19 +1,19 @@
 package com.thomasuster.threadpool.impl;
 
-import cs.system.threading.WaitHandle;
+import cs.system.threading.Mutex;
 
-class MutexCs extends WaitHandle implements MutexInterface {
+class MutexCs implements MutexInterface {
+  var mutex : Mutex = new Mutex();
 
   public function new() {
-    super();
   }
 
   public inline function acquire() : Void {
-    this.WaitOne();
+    mutex.WaitOne();
   }
 
   public inline function release() : Void {
-    this.Close();
+    mutex.ReleaseMutex();
   }
 
 }

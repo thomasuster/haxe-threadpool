@@ -44,9 +44,10 @@ class ThreadPool {
             }));
             thread.Start();
             #elseif python
-              new Thread({ target: function() {
+            var thread = new Thread({ target: function() {
                   threadLoop(models[i]);
               }});
+            thread.start();
             #else
             Thread.create(function() {
                 threadLoop(models[i]);
