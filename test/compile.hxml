@@ -18,3 +18,7 @@
 --next
 
 -python ../bin/test/TestMain.py
+
+--next
+
+-cs ../bin/test/cs
