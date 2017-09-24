@@ -31,3 +31,5 @@ test_script:
     - bin\test\cpp\TestMain.exe 10
     - echo NEKO
     - neko bin\test\TestMain.n 10
+    - echo C#
+    - bin\test\cs\bin\TestMain.exe 10
