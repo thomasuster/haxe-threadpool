@@ -5,6 +5,7 @@ clone_folder: C:\projects\haxe-threadpool
 environment:
     global:
         HAXELIB_ROOT: C:\projects\haxelib
+        PYTHON: C:\Python36
 
 install:
     # Install haxe and neko
@@ -36,4 +37,4 @@ test_script:
     - echo JAVA
     - java -jar bin\test\java\TestMain.jar 10
     - echo PYTHON
-    - python36 bin\test\TestMain.py 10
+    - python bin\test\TestMain.py 10
