@@ -33,3 +33,7 @@ test_script:
     - neko bin\test\TestMain.n 10
     - echo C#
     - bin\test\cs\bin\TestMain.exe 10
+    - echo JAVA
+    - java -jar bin\test\java\TestMain.jar 10
+    - echo PYTHON
+    - python bin\test\TestMain.py 10
