@@ -2,7 +2,7 @@ language: objective-c
 
 install:
   - brew update
-  - brew install neko haxe python mono
+  - brew install neko haxe mono
   - brew cask install java
   - cd ..
   - mkdir haxelib
