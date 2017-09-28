@@ -1,10 +1,8 @@
 language: objective-c
 
-python:
-  - "3.6"
 install:
   - brew update
-  - brew install neko haxe mono
+  - brew install neko haxe mono python3
   - brew cask install java
   - cd ..
   - mkdir haxelib

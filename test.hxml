@@ -7,7 +7,7 @@
 -cmd echo NEKO
 -cmd neko bin/test/TestMain.n 10
 -cmd echo python
--cmd python bin/test/TestMain.py 10
+-cmd python3 bin/test/TestMain.py 10
 -cmd echo JAVA
 -cmd java -jar bin/test/java/TestMain.jar 10
 -cmd echo C Sharp
