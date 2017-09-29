@@ -3,6 +3,12 @@
 -cmd haxe compile.hxml
 -cmd cd ..
 -cmd echo CPP
--cmd bin/test/TestMain 10
+-cmd bin/test/cpp/TestMain 10
 -cmd echo NEKO
 -cmd neko bin/test/TestMain.n 10
+-cmd echo python
+-cmd python3 bin/test/TestMain.py 10
+-cmd echo JAVA
+-cmd java -jar bin/test/java/TestMain.jar 10
+-cmd echo C Sharp
+-cmd mono bin/test/cs/bin/TestMain.exe 10

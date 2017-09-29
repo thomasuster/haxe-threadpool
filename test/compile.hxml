@@ -2,12 +2,23 @@
 -cp ../src
 -main TestMain
 #-debug
--cpp ../bin/test
+
+--each
+
+-cpp ../bin/test/cpp
 
 --next
 
--cp .
--cp ../src
--main TestMain
-#-debug
 -neko ../bin/test/TestMain.n
+
+--next
+
+-java ../bin/test/java
+
+--next
+
+-python ../bin/test/TestMain.py
+
+--next
+
+-cs ../bin/test/cs

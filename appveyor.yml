@@ -18,6 +18,8 @@ install:
     - haxelib setup "%HAXELIB_ROOT%"
     - haxelib install record-macros
     - haxelib install hxcpp
+    - haxelib install hxcs
+    - haxelib install hxjava
 
 build_script:
     - cd test
@@ -26,6 +28,12 @@ build_script:
 
 test_script:
     - echo CPP
-    - bin\test\TestMain.exe 10
+    - bin\test\cpp\TestMain.exe 10
     - echo NEKO
     - neko bin\test\TestMain.n 10
+    - echo C#
+    - bin\test\cs\bin\TestMain.exe 10
+    - echo JAVA
+    - java -jar bin\test\java\TestMain.jar 10
+    - echo PYTHON
+    - C:\Python36\python.exe bin\test\TestMain.py 10

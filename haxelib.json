@@ -4,7 +4,7 @@
   "license": "MIT",
   "classPath": "src",
   "tags": ["thread","pool"],
-  "description": "Thread pool library for haxe (neko or CPP)",
+  "description": "Thread pool library for haxe (neko, CPP, java, CS or python)",
   "releasenote": "",
   "version": "1.0.0",
   "contributors": []

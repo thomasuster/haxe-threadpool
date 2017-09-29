@@ -2,11 +2,14 @@ language: objective-c
 
 install:
   - brew update
-  - brew install neko haxe
+  - brew install neko haxe mono python3
+  - brew cask install java
   - cd ..
   - mkdir haxelib
   - haxelib setup haxelib
   - haxelib install hxcpp
+  - haxelib install hxcs
+  - haxelib install hxjava
 before_script:
   - cd $TRAVIS_BUILD_DIR
 script:
