@@ -6,9 +6,9 @@
 -cmd bin/test/cpp/TestMain 10
 -cmd echo NEKO
 -cmd neko bin/test/TestMain.n 10
--cmd echo python
+-cmd echo PYTHON
 -cmd python3 bin/test/TestMain.py 10
 -cmd echo JAVA
 -cmd java -jar bin/test/java/TestMain.jar 10
--cmd echo C Sharp
+-cmd echo C#
 -cmd mono bin/test/cs/bin/TestMain.exe 10
